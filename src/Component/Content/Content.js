@@ -42,8 +42,11 @@ const Content = ( ) => {
               </a>
               <div className="content__description">
                 <a href={list.url}> 
-                  <div>                    
-                   {utility.ellipses(list.description)}  
+                  <div                  
+                     
+                    title={list.description}
+                  >
+                   {utility.ellipses(list.description)} 
                   </div>
                 </a>
               </div>
