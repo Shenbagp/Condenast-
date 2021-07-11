@@ -1,0 +1,30 @@
+.footer__contents{    
+    padding:2rem;
+    display: flex;    
+    flex-direction: column;
+    justify-content: center;
+    align-items: 'center';         
+    background-color: black;
+    color:#fff;
+    max-height:28rem;
+}
+.footer__items{
+    margin:'2rem 0';
+    vertical-align:'top' ; 
+    margin-bottom: 2rem;
+    
+}
+.footer__item{
+    margin-bottom: 2rem;
+}
+
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) {
+    .footer__contents{    
+        padding:2rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;        
+    }
+  }
