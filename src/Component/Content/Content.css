@@ -95,7 +95,7 @@ visibility: hidden;
   {
     .content{
         display: grid;
-        grid-template-columns: 33% 33%  33%;     
+        grid-template-columns: 25% 25% 25% 25%;     
         margin : 1rem ;
         /* background-color: #ccc; */
         border:1px solid #ccc;
