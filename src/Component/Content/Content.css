@@ -47,12 +47,6 @@ a{
     text-decoration: none;
     color: #000;
 }
-.author__details{
-    color:#757776;
-    text-align: left;
-}
-
-
 
 
 .desc__tooltip{
@@ -67,27 +61,28 @@ a{
   position: absolute;
   z-index: 1;
 }
+ 
 
-.tooltip {
+.filter__options{   
+    margin-top: 2rem;
+    margin-left: 10%;
+    width:80px; 
+    height: 2rem ;
     position: relative;
-    display: inline-block;
-     
-  }
+    z-index: 100;  
+}
 
-.tooltip .desc__tooltip{
-visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-   
-  padding: 5px 0;
+.filter__options select:hover,
+.filter__options select:active,
+.filter__options select:focus {   
+    border: 3px solid steelblue;    
+}
 
-  
-  position: absolute;
-  z-index: 1;
-} 
-
+.option__style{
+    width:80%;
+    height:0.5rem;
+    font-size: 0.5rem;
+}
 
 @media screen 
   and (min-device-width: 1200px) 
@@ -112,5 +107,13 @@ visibility: hidden;
         background-color: "#ffff";
         padding-left:0.5rem;
         margin:1rem;
+    }
+    .filter__options{
+        margin-top: 2rem;
+        margin-left: 70%;
+        width:80px; 
+        height: 2rem ;
+        position: relative;
+        z-index: 100;        
     }
 }

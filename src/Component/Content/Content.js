@@ -10,6 +10,8 @@ import * as utility from "./../../Utilities/Utility"
 
 const Content = ( ) => {
   const [newsList, setNewsList] = useState([]);
+  const [ filter , setFilter] = useState('') ; 
+  const [ res , setRes] = useState([])
 
   useEffect(() => {
     let uri = `https://newsapi.org/v2/everything?q=tesla&from=${moment().format(
@@ -24,9 +26,29 @@ const Content = ( ) => {
             response.data.articles &&
             response.data.articles.length > 0 &&
             setNewsList(response.data.articles);
+            setRes(response.data.articles) ; 
       });
   }, []);
 
+  let  filterDate = []
+  if (res && res.length>0) {
+      filterDate = res.filter( list => list.author !== null ).map ( list => list.author)      
+      filterDate =  [... new Set(filterDate) ];  
+      filterDate.unshift('ALL')   
+  }
+  console.log('filterDate' , filterDate)
+
+  const SelectHandler = ( event )=>{
+      console.log("insied Handler" , event.currentTarget.value);      
+      let filter = event.currentTarget.value ;
+      let newsList = res.filter(list => list.author === filter) ;
+      console.log('res' , res) ; 
+      console.log("newsList" , newsList) ; 
+      filter==='ALL' ? setNewsList(res) :setNewsList ( newsList) ; 
+      setFilter(filter); 
+  }
+
+   
   const displayNews = (newsList) => {
     return (
       <div className="content">
@@ -50,7 +72,9 @@ const Content = ( ) => {
                   </div>
                 </a>
               </div>
-             
+              <div className="date__details">
+                {list.author}                 
+              </div>
               <div className="date__details">
                 {" "}
                 {moment(list.publishedAt).format("MMM DD YYYY")}{" "}
@@ -64,6 +88,14 @@ const Content = ( ) => {
 
   return (
     <div>
+      { filterDate && 
+        <div className="filter__options">
+          <select  value={filter} onChange={SelectHandler}>
+            { filterDate.map( list => <option  key={list} value={list}> {list}</option>)}
+          </select>
+        </div>
+      }     
+      
       {newsList && newsList.length > 0 && displayNews(newsList)}
       {newsList && newsList.length > 0 && <Footer />}
     </div>
@@ -71,3 +103,6 @@ const Content = ( ) => {
 };
 
 export default Content;
+
+
+ 
